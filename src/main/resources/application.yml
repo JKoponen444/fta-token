@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: fta-token
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+web3j:
+  # Base Sepolia testnet (chain ID 84532). Public endpoint is rate-limited; set
+  # WEB3J_CLIENT_ADDRESS to a provider URL (Alchemy, Infura, QuickNode) for real use.
+  client-address: ${WEB3J_CLIENT_ADDRESS:https://sepolia.base.org}
+  network-timeout: ${WEB3J_NETWORK_TIMEOUT:30s}
