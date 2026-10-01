@@ -28,11 +28,11 @@ class BlockchainControllerTests {
     private BlockchainService blockchainService;
 
     @Test
-    void networkReturnsChainIdAndBlockNumber() throws Exception {
+    void statusReturnsChainIdAndBlockNumber() throws Exception {
         when(blockchainService.getNetworkInfo())
                 .thenReturn(new NetworkInfo(BigInteger.valueOf(84532), BigInteger.valueOf(16)));
 
-        mockMvc.perform(get("/api/blockchain/network"))
+        mockMvc.perform(get("/api/blockchain/status"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(200))
                 .andExpect(jsonPath("$.errorMessage").value(nullValue()))
@@ -41,11 +41,11 @@ class BlockchainControllerTests {
     }
 
     @Test
-    void networkReturnsBadGatewayWhenNodeFails() throws Exception {
+    void statusReturnsBadGatewayWhenNodeFails() throws Exception {
         when(blockchainService.getNetworkInfo())
                 .thenThrow(new BlockchainException("Ethereum node request failed: eth_chainId"));
 
-        mockMvc.perform(get("/api/blockchain/network"))
+        mockMvc.perform(get("/api/blockchain/status"))
                 .andExpect(status().isBadGateway())
                 .andExpect(jsonPath("$.code").value(600))
                 .andExpect(jsonPath("$.errorMessage").value("Ethereum node request failed: eth_chainId"))

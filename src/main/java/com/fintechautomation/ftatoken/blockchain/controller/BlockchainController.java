@@ -15,8 +15,8 @@ public class BlockchainController {
     @Autowired
     private BlockchainService blockchainService;
 
-    @GetMapping("/network")
-    public ApiResult network() {
+    @GetMapping("/status")
+    public ApiResult status() {
         return ApiResult.success(blockchainService.getNetworkInfo());
     }
 }

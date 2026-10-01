@@ -20,7 +20,7 @@ Spring Boot 4.1 service (Java 21, Maven).
 ```
 
 - `GET http://localhost:8080/api/ping` — sample endpoint
-- `GET http://localhost:8080/api/blockchain/network` — chain ID and latest block of the configured node
+- `GET http://localhost:8080/api/blockchain/status` — chain ID and latest block of the configured node
 - `GET http://localhost:8080/actuator/health` — health check (also `/actuator/health/liveness` and `/readiness`)
 
 ## Response format
